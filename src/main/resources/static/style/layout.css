@@ -1,0 +1,21 @@
+body {
+background-color: #111111;
+}
+
+#content {
+display: flex;
+}
+
+#content > li {
+margin-right: 15px;
+}
+
+.hotDogBar {
+
+
+}
+
+.hotDogTop {
+display: flex;
+flex-direction: column;
+}

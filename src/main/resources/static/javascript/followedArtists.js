@@ -17,10 +17,14 @@ async function callTopArtists() {
     for (i = 0; i < json.length; i++) {
             const li = document.createElement("li");
             const img = document.createElement("img");
+            const link = document.createElement("a");
             console.log(json);
+            link.setAttribute("href", "http://localhost:8080/artist/" + json[i].id);
             img.setAttribute("src", json[i].images[0].url);
+            img.setAttribute("class", "artist");
 
-            li.appendChild(img);
+            link.appendChild(img);
+            li.appendChild(link);
             content.appendChild(li);
     }
 }

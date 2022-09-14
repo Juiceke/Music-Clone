@@ -2,20 +2,38 @@ body {
 background-color: #111111;
 }
 
+.container {
+display: flex
+}
+
+.artist {
+width: 100px;
+}
+
 #content {
 display: flex;
+flex: 1;
+flex-direction: row;
+border-left: 2px solid green;
 }
 
 #content > li {
+list-style: none;
 margin-right: 15px;
 }
 
 .hotDogBar {
-
-
+margin-right: 20px;
+background-color: black;
+height: 100%;
 }
 
 .hotDogTop {
+display: flex;
+flex-direction: column;
+}
+
+.hotDogBottom {
 display: flex;
 flex-direction: column;
 }

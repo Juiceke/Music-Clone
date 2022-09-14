@@ -3,21 +3,29 @@ package com.clone.music.controllers;
 
 import io.github.cdimascio.dotenv.Dotenv;
 import org.springframework.stereotype.Component;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import se.michaelthelin.spotify.SpotifyApi;
 import se.michaelthelin.spotify.SpotifyHttpManager;
 import se.michaelthelin.spotify.enums.ModelObjectType;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.model_objects.credentials.AuthorizationCodeCredentials;
-import se.michaelthelin.spotify.model_objects.specification.Artist;
-import se.michaelthelin.spotify.model_objects.specification.PagingCursorbased;
+import se.michaelthelin.spotify.model_objects.specification.*;
 import se.michaelthelin.spotify.requests.authorization.authorization_code.AuthorizationCodeRequest;
 import se.michaelthelin.spotify.requests.authorization.authorization_code.AuthorizationCodeUriRequest;
+import se.michaelthelin.spotify.requests.data.artists.GetArtistRequest;
+import se.michaelthelin.spotify.requests.data.artists.GetArtistsRelatedArtistsRequest;
+import se.michaelthelin.spotify.requests.data.artists.GetArtistsTopTracksRequest;
 import se.michaelthelin.spotify.requests.data.follow.GetUsersFollowedArtistsRequest;
+
+import com.neovisionaries.i18n.CountryCode;
+import se.michaelthelin.spotify.requests.data.users_profile.GetCurrentUsersProfileRequest;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.net.URI;
+import java.util.Hashtable;
+import java.util.Map;
 
 
 @RestController
@@ -100,5 +108,76 @@ public class AuthController {
             System.out.println("Something went wrong!\n" + e.getMessage());
         }
         return new Artist[0];
+    }
+
+    @GetMapping(value = "/artist/{id}")
+    public Artist getArtist(@PathVariable String id) {
+
+
+
+        final GetArtistRequest getArtistRequest = spotifyApi.getArtist(id)
+                .build();
+
+        try {
+
+            final Artist artist = getArtistRequest.execute();
+
+             return artist;
+        } catch (Exception e) {
+            System.out.println("Something went wrong!\n" + e.getMessage());
+        }
+
+        return null;
+    }
+
+    @GetMapping(value = "/artist-tracks/{id}")
+    public Track[] getArtistBestTracks (@PathVariable String id) {
+        CountryCode country = CountryCode.DE;
+
+        final GetArtistsTopTracksRequest getArtistsTopTracksRequest = spotifyApi
+                .getArtistsTopTracks(id, country)
+                .build();
+
+        try {
+            final Track[] tracks = getArtistsTopTracksRequest.execute();
+            return tracks;
+        } catch (Exception e) {
+            System.out.println("Something went wrong!\n" + e.getMessage());
+        }
+
+        return null;
+    }
+
+    @GetMapping(value = "/artist-related/{id}")
+    public Artist[] getRelatedArtists(@PathVariable String id) {
+
+        final GetArtistsRelatedArtistsRequest getArtistsRelatedArtistsRequest = spotifyApi
+                .getArtistsRelatedArtists(id)
+                .build();
+
+        try {
+
+            final Artist[] artists = getArtistsRelatedArtistsRequest.execute();
+
+            return artists;
+
+        } catch (Exception e) {
+            System.out.println("Something went wrong!\n" + e.getMessage());
+        }
+        return null;
+    }
+
+    @GetMapping(value = "/user")
+    public User getCurrentUserProfile() {
+        final GetCurrentUsersProfileRequest getCurrentUsersProfileRequest = spotifyApi
+                .getCurrentUsersProfile()
+                .build();
+        try {
+            final User user = getCurrentUsersProfileRequest.execute();
+            return user;
+        } catch (Exception e) {
+            System.out.println("Something went wrong!\n" + e.getMessage());
+        }
+        return null;
     }
 }

@@ -2,10 +2,7 @@ package com.clone.music.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.Mapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 @Controller
@@ -30,5 +27,15 @@ public class HomePageController {
     @GetMapping("/followed-artists")
     public String TopArtists(Model model) {
         return "FollowedArtists";
+    }
+
+    @GetMapping("/artist/{id}")
+    public String Artist(@PathVariable String id, Model model) {
+        return "artist";
+    }
+
+    @GetMapping("/user")
+    public String User(Model model) {
+        return "user";
     }
 }

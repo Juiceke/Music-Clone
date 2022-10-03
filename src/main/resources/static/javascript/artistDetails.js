@@ -16,7 +16,7 @@ async function GetArtist() {
 }
 
 async function GetArtistBestTracks() {
-//    fetch info about the artist
+//    fetch best tracks made by the artist
     return await fetch("http://localhost:8080/api/artist-tracks/" + id)
     .then(response => response.json())
     .then((response) => {
@@ -28,7 +28,7 @@ async function GetArtistBestTracks() {
 }
 
 async function GetRelatedArtist() {
-//    fetch info about the artist
+//    fetch artists similar to this one
     return await fetch("http://localhost:8080/api/artist-related/" + id)
     .then(response => response.json())
     .then((response) => {

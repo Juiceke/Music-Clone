@@ -6,22 +6,27 @@
     <link rel="stylesheet" href="/style/layout.css">
 </head>
 <body>
-<div class="container">
-    <div class="flex-child hotDogBar">
-        <div class="hotDogTop">
-            <h1 class="">Music</h1>
-            <a href="">Home</a>
-            <a href="">Your Library</a>
+<div id="left" class="column">
+    <nav class="navbar top-left top">
+        <img src="/assets/spotify-icons-logos/icons/01_RGB/02_PNG/Spotify_Icon_RGB_White.png" class="small">
+    </nav>
+        <div class="sidebar bottom">
+            <a class="sidechild" href="">Your Library</a>
+            <a class="sidechild" href="">Create Playlist</a>
+            <a class="sidechild" href="">Liked Songs</a>
         </div>
-
-        <div class="hotDogBottom">
-            <a href="">Create Playlist</a>
-            <a href="">Liked Songs</a>
-        </div>
-
     </div>
-    <div id="content" class="flex-child"></div>
-</div>
+        <main id="right" class="column">
+            <nav class="top-right top">
+                <h1>Filler</h1>
+            </nav>
+            <div class="container bottom">
+                <div id="content" class="flex-child"></div>
+            </div>
+        </main>
+    <div class="footer">
+        <h1>test</h1>
+    </div>
 </body>
 <script src="/javascript/followedArtists.js"></script>
 </html>

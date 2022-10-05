@@ -1,5 +1,6 @@
 html {
 height: 100%;
+background: black;
 }
 
 body {
@@ -21,7 +22,7 @@ box-sizing: border-box;
 }
 
 #right {
-width: 95%
+width: 100%
 }
 
 .top {
@@ -49,7 +50,7 @@ overflow-y: auto;
 
 .small {
 height: 32px;
-padding: 16px 0 12px 16px;
+padding: 16px 0 15px 16px;
 }
 
 .sidebar {
@@ -71,7 +72,7 @@ height: 100%;
 }
 
 .container {
-margin-left: 10px;
+border-left: solid black;
 background: #191414;
 
 width: 100%;

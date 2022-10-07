@@ -54,10 +54,11 @@ padding: 16px 0 15px 16px;
 }
 
 .sidebar {
-width: 150px;
+width: 230px;
 flex: 1 0 10%;
-height: 100%;
 background: #191414;
+margin-left: 9px;
+border-radius: 10px;
 }
 
 .sidechild {
@@ -72,10 +73,10 @@ height: 100%;
 }
 
 .container {
-border-left: solid black;
+margin-left: 8px;
 background: #191414;
-
-width: 100%;
+border-radius: 10px;
+width: 99%;
 height: 90%;
 }
 

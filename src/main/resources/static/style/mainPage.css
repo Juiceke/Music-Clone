@@ -1,0 +1,27 @@
+.media-group {
+margin-top: 10px;
+}
+
+.artist {
+display: flex;
+margin-right: 15px;
+background: #231C1C;
+width: 150px;
+height: 200px;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+color: white;
+}
+
+.linkWrapper {
+margin-top: 15px;
+margin-left: 15px
+width: 100px;
+height: 100px;
+}
+
+.artistImg {
+width: 100px;
+border-radius: 5px;
+}

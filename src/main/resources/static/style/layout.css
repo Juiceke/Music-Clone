@@ -15,6 +15,7 @@ box-sizing: border-box;
     height: 100%;  /* allows both columns to span the full height of the browser window */
     display: flex;
     flex-direction: column;  /* stacks the left and right headers above the bottom content */
+    overflow: hidden;
 }
 
 #left {
@@ -32,7 +33,6 @@ color: #191414;
 
 .top-left {
     flex-shrink: 0;
-
 }
 
 .top-right {
@@ -80,16 +80,14 @@ width: 99%;
 height: 90%;
 }
 
-.artist {
-width: 100px;
-}
-
 #content {
-display: flex;
 
-flex-direction: row;
 margin-left: 15px;
 margin-right: 15px;
+}
+
+.media-group {
+display: flex;
 }
 
 #content > li {

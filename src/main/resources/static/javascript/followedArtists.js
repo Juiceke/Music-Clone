@@ -20,7 +20,8 @@ async function callFollowedArtists() {
             const childDiv = document.createElement("div");
             const img = document.createElement("img");
             const link = document.createElement("a");
-            const name = document.createElement("h3");
+            const nameDiv = document.createElement("div");
+            const title = document.createElement("div");
             console.log(json);
 
 
@@ -30,12 +31,21 @@ async function callFollowedArtists() {
             link.setAttribute("class", "linkWrapper")
             img.setAttribute("src", json[i].images[0].url);
             img.setAttribute("class", "artistImg");
-            name.innerHTML = json[i].name;
+            nameDiv.setAttribute("class", "artistInfo");
+            title.setAttribute("class", "title");
+
+            nameDiv.innerHTML = json[i].name;
+            //   make word have capital letter proceeded by lowercase letters
+            const word = json[i].type.charAt(0) + json[i].type.substring(1).toLowerCase();
+            title.innerHTML = word;
+
 
             link.append(img);
+
             parentDiv.appendChild(childDiv);
             childDiv.appendChild(link);
-            childDiv.appendChild(name);
+            childDiv.appendChild(nameDiv);
+            childDiv.appendChild(title);
             content.appendChild(parentDiv);
 
     }

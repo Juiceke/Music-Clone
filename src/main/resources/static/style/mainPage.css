@@ -6,22 +6,44 @@ margin-top: 10px;
 display: flex;
 margin-right: 15px;
 background: #231C1C;
-width: 150px;
-height: 200px;
-align-items: center;
-justify-content: center;
+width: 160px;
+height: 250px;
 flex-direction: column;
+justify-content: start;
+align-items: center;
 color: white;
-}
+border-radius: 4px;
 
-.linkWrapper {
-margin-top: 15px;
-margin-left: 15px
-width: 100px;
-height: 100px;
 }
 
 .artistImg {
-width: 100px;
-border-radius: 5px;
+ margin-top: 10px;
+ width: 140px;
+ border-radius: 5px;
+  text-align: center;
 }
+
+.linkWrapper {
+
+}
+
+.artistInfo {
+margin-top: 15px;
+margin-left: 5px;
+width: 135px;
+font-size: 19px;
+overflow: hidden;
+display: inline-block;
+
+white-space: nowrap;
+text-overflow: ellipsis;
+}
+
+.title {
+margin-top: 10px;
+margin-left: 5px;
+width: 135px;
+display: inline-block;
+}
+
+

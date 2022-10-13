@@ -3,7 +3,6 @@ package com.clone.music.controllers;
 
 import io.github.cdimascio.dotenv.Dotenv;
 import org.springframework.stereotype.Component;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import se.michaelthelin.spotify.SpotifyApi;
 import se.michaelthelin.spotify.SpotifyHttpManager;
@@ -16,6 +15,7 @@ import se.michaelthelin.spotify.requests.authorization.authorization_code.Author
 import se.michaelthelin.spotify.requests.data.artists.GetArtistRequest;
 import se.michaelthelin.spotify.requests.data.artists.GetArtistsRelatedArtistsRequest;
 import se.michaelthelin.spotify.requests.data.artists.GetArtistsTopTracksRequest;
+import se.michaelthelin.spotify.requests.data.browse.GetListOfNewReleasesRequest;
 import se.michaelthelin.spotify.requests.data.follow.GetUsersFollowedArtistsRequest;
 
 import com.neovisionaries.i18n.CountryCode;
@@ -24,8 +24,6 @@ import se.michaelthelin.spotify.requests.data.users_profile.GetCurrentUsersProfi
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.net.URI;
-import java.util.Hashtable;
-import java.util.Map;
 
 
 @RestController
@@ -175,6 +173,21 @@ public class AuthController {
         try {
             final User user = getCurrentUsersProfileRequest.execute();
             return user;
+        } catch (Exception e) {
+            System.out.println("Something went wrong!\n" + e.getMessage());
+        }
+        return null;
+    }
+
+    @GetMapping(value = "/new")
+    public Paging<AlbumSimplified> getListOfNewReleases() {
+        CountryCode country = CountryCode.DE;
+        final GetListOfNewReleasesRequest getListOfNewReleasesRequest = spotifyApi.getListOfNewReleases()
+                .country(country)
+                .build();
+        try {
+            final Paging<AlbumSimplified> albumSimplifiedPaging = getListOfNewReleasesRequest.execute();
+            return albumSimplifiedPaging;
         } catch (Exception e) {
             System.out.println("Something went wrong!\n" + e.getMessage());
         }

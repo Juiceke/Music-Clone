@@ -4,7 +4,7 @@ margin-top: 10px;
 
 .artist {
 display: flex;
-margin-right: 15px;
+margin: 15px;
 background: #231C1C;
 width: 160px;
 height: 250px;
@@ -17,14 +17,13 @@ border-radius: 4px;
 }
 
 .artistImg {
- margin-top: 10px;
  width: 140px;
  border-radius: 5px;
   text-align: center;
 }
 
 .linkWrapper {
-
+margin-top: 10px;
 }
 
 .artistInfo {

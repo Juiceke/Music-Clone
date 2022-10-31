@@ -1,5 +1,13 @@
 const content = document.getElementById("content");
-const mql = window.matchMedia("(max-width: 800px)")
+const mqls = [
+    window.matchMedia("(max-width: 860px)"),
+    window.matchMedia("(max-width: 1050px)"),
+    window.matchMedia("(max-width: 1240px)"),
+    window.matchMedia("(max-width: 1430px)"),
+    window.matchMedia("(max-width: 1620px)"),
+    window.matchMedia("(max-width: 1810px)"),
+    window.matchMedia("(max-width: 2000px)")
+];
 
 async function GetListOfNewReleases() {
 
@@ -20,8 +28,8 @@ async function CallListOfNewReleases() {
 
     let contentAmount;
 
-    console.log(mql);
-    if (mql.matches) {
+    console.log(mqls);
+    if (mqls.matches) {
     contentAmount = 2;
     console.log("no")
     } else {
@@ -37,8 +45,7 @@ async function CallListOfNewReleases() {
                 const nameDiv = document.createElement("div");
                 const title = document.createElement("div");
 
-                parentDiv.setAttribute("class", "media-group");
-                parentDiv.setAttribute("class", "new-releases");
+                parentDiv.setAttribute("class", "media-group new-releases");
                 childDiv.setAttribute("class", "artist")
                 link.setAttribute("href", "http://localhost:8080/artist/" + json.items[i].id);
                 link.setAttribute("class", "linkWrapper")
@@ -73,24 +80,33 @@ async function CallListOfNewReleases() {
 function mediaqueryresponse() {
 const rmvContent = document.getElementsByClassName("new-releases");
 const artists = document.getElementsByClassName("artist");
-const artistsarr = [];
-for(i = 0; i < artists.length; i++) {
-    artistsarr.push(artists[i]);
-}
+//const artistsarr = [];
+//for(i = 0; i < artists.length; i++) {
+//    artistsarr.push(artists[i]);
+//}
 console.log(rmvContent);
 console.log(artists);
 
-for (i = 8; i >= artists.length; i--) {
+for (i = artists.length; i >= artists.length; i--) {
 
-    if (mql.matches) {
-    console.log(artistsarr);
-        if (i > 2) {
+    if (mqls[5].matches && i > 7) {
+         artists[i - 1].remove();
+    } else if (mqls[4].matches && i > 6) {
+      artists[i - 1].remove();
+    } else if(mqls[3].matches && i > 5) {
+         artists[i - 1].remove();
+    } else if (mqls[2].matches && i > 4) {
+         artists[i - 1].remove();
+    } else if (mqls[1].matches && i > 3) {
+   artists[i - 1].remove();
+    } else if (mqls[0].matches && i > 2) {
+//    console.log(artistsarr);
+//        if (i > 2) {
         console.log(artists[i - 1]);
         artists[i - 1].remove();
-        }
-
     } else {
-        console.log(artists)
+        return;
+        }
     }
 
 }
@@ -98,7 +114,8 @@ for (i = 8; i >= artists.length; i--) {
 
 
 //CallListOfNewReleases();
-}
 
 CallListOfNewReleases();
-mql.addListener(mediaqueryresponse);
+for (i = 0; i < mqls.length; i++) {
+    mqls[i].addListener(mediaqueryresponse);
+}
